@@ -118,15 +118,15 @@ jobs:
                   }
                 ]
               },
-              "streamSettings": {
+             "streamSettings": {
+                "security": "tls",
                 "network":"ws",
                 "wsSettings": {
-                  "path": "${V2_WS_PATH_VLESS}",
-                  "security": "tls",
-                  "allowInsecure": "false",
+                  "path": "${V2_WS_PATH_VLESS}"
                 }
+                "allowInsecure": "false",
               }
-            }
+            } 
           ],
           "outbounds": [
             {
