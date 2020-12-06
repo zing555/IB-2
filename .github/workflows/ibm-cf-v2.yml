@@ -11,7 +11,7 @@ name: IBM Cloud Foundry - V2Ray
 
 env:
   IBM_CF_API: https://api.us-south.cf.cloud.ibm.com
-  IBM_CF_APP_MEM: 128M
+  IBM_CF_APP_MEM: 64M
 
 on:
   workflow_dispatch:
@@ -32,7 +32,6 @@ jobs:
       V2_UUID: ${{ secrets.V2_UUID }}
       V2_WS_PATH_VMESS: ${{ secrets.V2_WS_PATH_VMESS }}
       V2_WS_PATH_VLESS: ${{ secrets.V2_WS_PATH_VLESS }}
-      V2_IBM_KEY: ${{ secrets.V2_IBM_KEY }}
 
     steps:
 
@@ -120,15 +119,11 @@ jobs:
                 ]
               },
               "streamSettings": {
-                "network":"quic",
-                "quicSettings": {
+                "network":"ws",
+                "wsSettings": {
                   "path": "${V2_WS_PATH_VLESS}"
-                  "security": "chacha20-poly1305",
-                  "key": "${V2_IBM_KEY}",
+                  "security": "tls",
                   "allowInsecure": "false"
-                  "header": {
-                      "type": "wireguard"
-                  }
                 }
               }
             }
