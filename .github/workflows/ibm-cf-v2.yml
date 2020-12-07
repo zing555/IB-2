@@ -125,11 +125,13 @@ jobs:
                 ]
               },
              "streamSettings": {
-                "allowInsecure": "false",
                 "network": "tcp",
                 "security": "xtls",
                 "tcpSettings": {
-                  "type": "none"
+                 "type": "none"
+                },
+                "xtlsSettings": {
+                   "allowInsecure": false
                 }
               }
             } 
