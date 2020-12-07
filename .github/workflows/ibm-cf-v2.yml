@@ -30,7 +30,7 @@ jobs:
       IBM_CF_SPACE_NAME: ${{ secrets.IBM_CF_SPACE_NAME }}
       IBM_CF_APP_NAME: ${{ secrets.IBM_CF_APP_NAME }}
       V2_UUID: ${{ secrets.V2_UUID }}
-      V2_WS_PATH_VMESS: ${{ secrets.V2_WS_PATH_VMESS }}
+     # V2_WS_PATH_VMESS: ${{ secrets.V2_WS_PATH_VMESS }}
       V2_WS_PATH_VLESS: ${{ secrets.V2_WS_PATH_VLESS }}
 
     steps:
@@ -61,7 +61,7 @@ jobs:
         mv v2ray ${IBM_CF_APP_NAME}
 
     - name: Generate V2Ray Config File (VMess)
-      if: ${{ env.V2_WS_PATH_VMESS }}
+     # if: ${{ env.V2_WS_PATH_VMESS }}
       run: |
         base64 << P3TERX > config
         {
