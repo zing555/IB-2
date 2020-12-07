@@ -82,10 +82,13 @@ jobs:
                 ]
               },
               "streamSettings": {
-                "allowInsecure": "false",
-                "network":"ws",
-                "wsSettings": {
-                  "path": "${V2_WS_PATH_VMESS}"
+                "network": "tcp",
+                "security": "xtls",
+                "tcpSettings": {
+                 "type": "none"
+                },
+                "xtlsSettings": {
+                   "allowInsecure": "false",
                 }
               }
             }
