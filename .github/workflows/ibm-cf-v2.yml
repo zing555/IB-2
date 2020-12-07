@@ -77,7 +77,7 @@ jobs:
                 "clients": [
                   {
                     "id": "${V2_UUID}",
-                    "alterId": 0
+                    "alterId": 64
                   }
                 ]
               },
@@ -115,8 +115,6 @@ jobs:
                 "clients": [
                   {
                     "id": "${V2_UUID}"
-                    "flow": "xtls-rprx-direct",
-                    "level": 0
                   }
                 ]
               },
