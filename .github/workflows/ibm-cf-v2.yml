@@ -115,7 +115,7 @@ jobs:
                 "clients": [
                   {
                     "id": "${V2_UUID}"
-                    "flow": "xtls-rprx-direct",
+                    "flow": "xtls-rprx-direct"
                   }
                 ]
               },
