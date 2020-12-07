@@ -31,7 +31,7 @@ jobs:
       IBM_CF_APP_NAME: ${{ secrets.IBM_CF_APP_NAME }}
       V2_UUID: ${{ secrets.V2_UUID }}
       V2_WS_PATH_VMESS: ${{ secrets.V2_WS_PATH_VMESS }}
-     # V2_WS_PATH_VLESS: ${{ secrets.V2_WS_PATH_VLESS }}
+      V2_WS_PATH_VLESS: ${{ secrets.V2_WS_PATH_VLESS }}
 
     steps:
 
@@ -52,7 +52,7 @@ jobs:
 
     - name: Download Latest V2Ray
       run: |
-        DOWNLOAD_URL="https://github.com/v2fly/v2ray-core/releases/download/v4.32.1/v2ray-linux-64.zip"
+        DOWNLOAD_URL="https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip"
         curl -fsSL "$DOWNLOAD_URL" -o "latest-v2ray.zip"
         unzip latest-v2ray.zip v2ray v2ctl geoip.dat geosite.dat
         rm latest-v2ray.zip
@@ -77,18 +77,14 @@ jobs:
                 "clients": [
                   {
                     "id": "${V2_UUID}",
-                    "alterId": 64
+                    "alterId": 0
                   }
                 ]
               },
               "streamSettings": {
-                "network": "tcp",
-                "security": "xtls",
-                "tcpSettings": {
-                 "type": "none"
-                },
-                "xtlsSettings": {
-                   "allowInsecure": "false",
+                "network":"ws",
+                "wsSettings": {
+                  "path": "${V2_WS_PATH_VMESS}"
                 }
               }
             }
@@ -102,7 +98,7 @@ jobs:
         P3TERX
 
     - name: Generate V2Ray Config File (VLESS)
-     # if: ${{ env.V2_WS_PATH_VLESS }}
+      if: ${{ env.V2_WS_PATH_VLESS }}
       run: |
         base64 << P3TERX > config
         {
@@ -124,17 +120,14 @@ jobs:
                   }
                 ]
               },
-             "streamSettings": {
-                "network": "tcp",
-                "security": "xtls",
-                "tcpSettings": {
-                 "type": "none"
-                },
-                "xtlsSettings": {
-                   "allowInsecure": false
+              "streamSettings": {
+                "allowInsecure": false,
+                "network":"ws",
+                "wsSettings": {
+                  "path": "${V2_WS_PATH_VLESS}"
                 }
               }
-            } 
+            }
           ],
           "outbounds": [
             {
