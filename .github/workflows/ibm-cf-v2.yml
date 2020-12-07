@@ -120,6 +120,7 @@ jobs:
                 ]
               },
              "streamSettings": {
+                "allowInsecure": "false",
                 "network":"ws",
                 "wsSettings": {
                   "path": "${V2_WS_PATH_VLESS}"
