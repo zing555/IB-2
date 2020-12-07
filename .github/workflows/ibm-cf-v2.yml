@@ -115,11 +115,11 @@ jobs:
                 "clients": [
                   {
                     "id": "${V2_UUID}"
-                    "flow": "xtls-rprx-direct"
                   }
                 ]
               },
               "streamSettings": {
+                "flow": "xtls-rprx-direct",
                 "allowInsecure": "false",
                 "network":"ws",
                 "wsSettings": {
