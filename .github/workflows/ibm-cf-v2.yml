@@ -116,15 +116,17 @@ jobs:
                   {
                     "id": "${V2_UUID}",
                     "flow": "xtls-rprx-origin",
-                    "level": 0,                    
+                    "level": 0                    
                   }
                 ]
               },
               "streamSettings": {
                 "network":"ws",
-                "allowInsecure": "false",
                 "wsSettings": {
                   "path": "${V2_WS_PATH_VLESS}"
+                }
+                "xtlsSettings": {
+                   "allowInsecure": false
                 }
               }
             }
