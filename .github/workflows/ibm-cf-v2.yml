@@ -114,7 +114,9 @@ jobs:
                 "decryption": "none",
                 "clients": [
                   {
-                    "id": "${V2_UUID}"
+                    "id": "${V2_UUID}",
+                    "flow": "xtls-rprx-origin",
+                    "level": 0,                    
                   }
                 ]
               },
