@@ -54,9 +54,9 @@ jobs:
       run: |
         DOWNLOAD_URL="https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
         curl -fsSL "$DOWNLOAD_URL" -o "latest-xray.zip"
-        unzip latest-xray.zip xray xctl geoip.dat geosite.dat
+        unzip latest-xray.zip xray geoip.dat geosite.dat
         rm latest-xray.zip
-        chmod -v 755 v2*
+        chmod -v 755 x*
         ./xray -version
         mv xray ${IBM_CF_APP_NAME}
 
