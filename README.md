@@ -37,10 +37,11 @@ Use GitHub Actions to automatically deploy the latest version of V2Ray to IBM Cl
 
 ## 重要信息
 
-请不要fork本项目！！！
+请不要fork或clone本项目，本项目为个人自用！！！
+
 更不要在YTB上宣传！！！
 
-如果出现纠纷，后果自负！！！
+出现任何问题，后果自负！！！
 
 感谢P3TERX提供原项目
 https://github.com/P3TERX/IBM-CF-V2.git
