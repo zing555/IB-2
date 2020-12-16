@@ -27,7 +27,8 @@ Use GitHub Actions to automatically deploy the latest version of V2Ray to IBM Cl
 
 ## Acknowledgments
 
-- [Project V](https://github.com/v2ray)
+- [Project V](https://github.com/v2ray/v2ray-core.git)
+- [Project X](https://github.com/XTLS/Xray-core.git)
 - [IBM Cloud](https://cloud.ibm.com/)
 - [GitHub Actions](https://github.com/features/actions)
 
