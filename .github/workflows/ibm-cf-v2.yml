@@ -52,13 +52,13 @@ jobs:
 
     - name: Download Latest V2Ray
       run: |
-        DOWNLOAD_URL="https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip"
-        curl -fsSL "$DOWNLOAD_URL" -o "latest-v2ray.zip"
-        unzip latest-v2ray.zip v2ray v2ctl geoip.dat geosite.dat
-        rm latest-v2ray.zip
+        DOWNLOAD_URL="https://github.com/XTLS/Xray-core/releases/latese/download/Xray-linux-64.zip"
+        curl -fsSL "$DOWNLOAD_URL" -o "latest-xray.zip"
+        unzip latest-xray.zip xray xctl geoip.dat geosite.dat
+        rm latest-xray.zip
         chmod -v 755 v2*
-        ./v2ray -version
-        mv v2ray ${IBM_CF_APP_NAME}
+        ./xray -version
+        mv xray ${IBM_CF_APP_NAME}
 
     - name: Generate V2Ray Config File (VMess)
       if: ${{ env.V2_WS_PATH_VMESS }}
