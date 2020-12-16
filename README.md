@@ -52,6 +52,6 @@ If there is any problem, you will be responsible for the consequences！！！
 
 感谢P3TERX提供原项目
 
-Thank you P3TERX for providing the original project
+Thank P3TERX for providing the original project
 
 - [IBM-CF-V2](https://github.com/P3TERX/IBM-CF-V2.git)
