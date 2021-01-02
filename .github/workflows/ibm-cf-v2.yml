@@ -139,7 +139,7 @@ jobs:
         P3TERX
         
     - name: Generate ShadowSocks Config File (SS)
-      if: ${{ secrets.SS_PASS }}
+      if: ${{ env.SS_PASS }}
       run: |
         base64 << P3TERX > config
         {
@@ -165,7 +165,7 @@ jobs:
                    "protocol": "shadowsocks",
                    "settings": {
                        "method": "chacha20-ietf-poly1305",
-                       "password": "${{ secrets.SS_PASS }}"
+                       "password": "${SS_PASS}"
               },
                   "streamSettings": {
                       "network": "tcp,udp"
