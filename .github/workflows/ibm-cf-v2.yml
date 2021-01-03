@@ -7,7 +7,7 @@
 # See /LICENSE for more information.
 #
 
-name: IBM Cloud Foundry - V2Ray
+name: IBM Cloud Foundry - XRay
 
 env:
   IBM_CF_API: https://api.us-south.cf.cloud.ibm.com
