@@ -121,13 +121,10 @@ jobs:
                 ]
               },
               "streamSettings": {
-                "network": "tcp",
-                "tcpSettings": {
-                 "type": "none",
-                 "path": "${V2_WS_PATH_VLESS}"
-                },
-                "xtlsSettings": {
-                   "allowInsecure": false
+                "network":"ws",
+                "allowInsecure": "false",
+                "wsSettings": {
+                  "path": "${V2_WS_PATH_VLESS}"
                 }
               }
             }
