@@ -145,6 +145,18 @@ jobs:
             "access": "none",
             "loglevel": "error"
           },
+          "routing": {
+            "domainStrategy": "AsIs",
+            "rules": [
+              {
+                "type": "field",
+                "ip": [
+                  "geoip:private"
+                ],
+                "outboundTag": "block"
+              }
+            ]
+          },
           "inbounds": [
             {
               "listen": "0.0.0.0",
