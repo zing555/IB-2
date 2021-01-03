@@ -142,6 +142,7 @@ jobs:
         base64 << P3TERX > config
         {
             "log": {
+                "access": "none",
                 "loglevel": "warning"
             },
             "routing": {
@@ -159,7 +160,7 @@ jobs:
             "inbounds": [
                 {
                     "listen": "0.0.0.0",
-                    "port": 1234,
+                    "port": 1080,
                     "protocol": "shadowsocks",
                     "settings": {
                         "method": "chacha20-ietf-poly1305",
