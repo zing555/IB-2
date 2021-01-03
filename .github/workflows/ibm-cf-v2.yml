@@ -141,46 +141,45 @@ jobs:
       run: |
         base64 << P3TERX > config
         {
-          "log": {
-            "access": "none",
-            "loglevel": "warning"
-          },
-          "routing": {
-            "domainStrategy": "AsIs",
-            "rules": [
-              {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "block"
-              }
-            ]
-          },
-          "inbounds": [
-            {
-              "listen": "127.0.0.1",
-              "port": 1080,
-              "protocol": "shadowsocks",
-              "settings": {
-                "method": "chacha20-ietf-poly1305",
-                "password": "${SS_PASS}"
-              },
-              "streamSettings": {
-                "network": "tcp"
+            "log": {
+                "loglevel": "warning"
+            },
+            "routing": {
+                "domainStrategy": "AsIs",
+                "rules": [
+                    {
+                        "type": "field",
+                        "ip": [
+                            "geoip:private"
+                        ],
+                        "outboundTag": "block"
+                    }
+                ]
+            },
+            "inbounds": [
+                {
+                    "listen": "127.0.0.1",
+                    "port": 1080,
+                    "protocol": "shadowsocks",
+                    "settings": {
+                        "method": "chacha20-ietf-poly1305",
+                        "password": "${SS_PASS}"
+                },
+                    "streamSettings": {
+                        "network": "tcp"
+                    }
                 }
-              }
             ],
             "outbounds": [
-            {
-              "protocol": "freedom",
-              "tag": "direct"
-            },
-            {
-              "protocol": "blackhole",
-              "tag": "block"
-            }
-          ]
+                {
+                    "protocol": "freedom",
+                    "tag": "direct"
+                },
+                {
+                    "protocol": "blackhole",
+                    "tag": "block"
+                }
+            ]
         }
         P3TERX
 
