@@ -158,8 +158,8 @@ jobs:
             },
             "inbounds": [
                 {
-                    "listen": "127.0.0.1",
-                    "port": 1080,
+                    "listen": "0.0.0.0",
+                    "port": 1234,
                     "protocol": "shadowsocks",
                     "settings": {
                         "method": "chacha20-ietf-poly1305",
