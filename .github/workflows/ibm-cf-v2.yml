@@ -101,42 +101,74 @@ jobs:
       if: ${{ env.V2_WS_PATH_VLESS }}
       run: |
         base64 << P3TERX > config
-        {
-          "log": {
-            "access": "none",
-            "loglevel": "error"
-          },
-          "inbounds": [
-            {
-              "port": 8080,
-              "protocol": "vless",
-              "settings": {
-                "decryption": "none",
-                "clients": [
-                  {
-                    "id": "${V2_UUID}",
-                    "flow": "xtls-rprx-direct",
-                    "level": 0,
-                    "email": "love@example.com"
-                  }
-                ]
-              },
-              "streamSettings": {
-                "network":"ws",
-                "security": "none",
-                "allowInsecure": "false",
-                "wsSettings": {
-                  "path": "${V2_WS_PATH_VLESS}"
-                }
-              }
-            }
-          ],
-          "outbounds": [
-            {
-              "protocol": "freedom"
-            }
-          ]
-        }
+				{
+						"log": {
+								"loglevel": "warning"
+						},
+						"inbounds": [
+								{
+										"port": 443,
+										"protocol": "vless",
+										"settings": {
+												"clients": [
+														{
+																"id": "", // 填写你的 UUID
+																"level": 0,
+																"email": "love@example.com"
+														}
+												],
+												"decryption": "none",
+												"fallbacks": [
+														{
+																"dest": 80
+														},
+														{
+																"path": "/websocket", // 必须换成自定义的 PATH
+																"dest": 1234,
+																"xver": 1
+														}
+												]
+										},
+										"streamSettings": {
+												"network": "tcp",
+												"security": none",
+												"tlsSettings": {
+														"alpn": [
+																"http/1.1"
+														],
+												}
+										}
+								},
+								{
+										"port": 1234,
+										"listen": "127.0.0.1",
+										"protocol": "vless",
+										"settings": {
+												"clients": [
+														{
+																"id": "", // 填写你的 UUID
+																"level": 0,
+																"email": "love@example.com"
+														}
+												],
+												"decryption": "none"
+										},
+										"streamSettings": {
+												"network": "ws",
+												"security": "none",
+												"wsSettings": {
+														"acceptProxyProtocol": true, // 提醒：若你用 Nginx/Caddy 等反代 WS，需要删掉这行
+														"path": "/websocket" // 必须换成自定义的 PATH，需要和上面的一致
+												}
+										}
+								}
+						],
+						"outbounds": [
+								{
+										"protocol": "freedom"
+								}
+						]
+				}
         P3TERX
 
     - name: Generate Manifest File
