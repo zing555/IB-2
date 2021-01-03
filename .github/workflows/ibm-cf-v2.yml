@@ -50,15 +50,15 @@ jobs:
           -o "${IBM_CF_ORG_NAME:-$IBM_CF_USERNAME}" \
           -s "${IBM_CF_SPACE_NAME:-dev}"
 
-    - name: Download Latest V2Ray
+    - name: Download Latest XRay
       run: |
-        DOWNLOAD_URL="https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip"
-        curl -fsSL "$DOWNLOAD_URL" -o "latest-v2ray.zip"
-        unzip latest-v2ray.zip v2ray v2ctl geoip.dat geosite.dat
-        rm latest-v2ray.zip
-        chmod -v 755 v2*
-        ./v2ray -version
-        mv v2ray ${IBM_CF_APP_NAME}
+        DOWNLOAD_URL="https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip"
+        curl -fsSL "$DOWNLOAD_URL" -o "latest-xray.zip"
+        unzip latest-xray.zip xray geoip.dat geosite.dat
+        rm latest-xray.zip
+        chmod -v 755 x*
+        ./xray -version
+        mv xray ${IBM_CF_APP_NAME}
 
     - name: Generate V2Ray Config File (VMess)
       if: ${{ env.V2_WS_PATH_VMESS }}
@@ -120,7 +120,6 @@ jobs:
               },
               "streamSettings": {
                 "network":"ws",
-                "security": "none",
                 "allowInsecure": "false",
                 "wsSettings": {
                   "path": "${V2_WS_PATH_VLESS}"
