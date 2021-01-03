@@ -136,54 +136,6 @@ jobs:
         }
         P3TERX
 
-    - name: Generate ShadowSocks Config File (SS)
-      if: ${{ env.SS_PASS }}
-      run: |
-        base64 << P3TERX > config
-        {
-            "log": {
-                "access": "none",
-                "loglevel": "warning"
-            },
-            "routing": {
-                "domainStrategy": "AsIs",
-                "rules": [
-                    {
-                        "type": "field",
-                        "ip": [
-                            "geoip:private"
-                        ],
-                        "outboundTag": "block"
-                    }
-                ]
-            },
-            "inbounds": [
-                {
-                    "listen": "0.0.0.0",
-                    "port": 1080,
-                    "protocol": "shadowsocks",
-                    "settings": {
-                        "method": "chacha20-ietf-poly1305",
-                        "password": "${SS_PASS}"
-                },
-                    "streamSettings": {
-                        "network": "tcp"
-                    }
-                }
-            ],
-            "outbounds": [
-                {
-                    "protocol": "freedom",
-                    "tag": "direct"
-                },
-                {
-                    "protocol": "blackhole",
-                    "tag": "block"
-                }
-            ]
-        }
-        P3TERX
-
     - name: Generate Manifest File
       run: |
         cat << P3TERX > manifest.yml
