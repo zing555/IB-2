@@ -122,7 +122,6 @@ jobs:
               },
               "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
                 "tcpSettings": {
                  "type": "none",
                  "path": "${V2_WS_PATH_VLESS}"
