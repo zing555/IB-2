@@ -32,6 +32,7 @@ jobs:
       V2_UUID: ${{ secrets.V2_UUID }}
       V2_WS_PATH_VMESS: ${{ secrets.V2_WS_PATH_VMESS }}
       V2_WS_PATH_VLESS: ${{ secrets.V2_WS_PATH_VLESS }}
+      SS_PASS: ${{ secrets.SS_PASS }}
 
     steps:
 
@@ -130,6 +131,41 @@ jobs:
           "outbounds": [
             {
               "protocol": "freedom"
+            }
+          ]
+        }
+        P3TERX
+
+    - name: Generate ShadowSocks Config File (SS)
+      if: ${{ env.SS_PASS }}
+      run: |
+        base64 << P3TERX > config
+        {
+          "log": {
+            "access": "none",
+            "loglevel": "error"
+          },
+          "inbounds": [
+            {
+              "port": 1080,
+              "protocol": "shadowsocks",
+              "settings": {
+                "method": "chacha20-ietf-poly1305",
+                "password": "${SS_PASS}"
+            },
+              "streamSettings": {
+                "network": "tcp,udp"
+              }
+            }
+          ],
+          "outbounds": [
+            {
+              "protocol": "freedom",
+              "tag": "direct"
+            },
+            {
+              "protocol": "blackhole",
+              "tag": "block"
             }
           ]
         }
