@@ -32,7 +32,6 @@ jobs:
       V2_UUID: ${{ secrets.V2_UUID }}
       V2_WS_PATH_VMESS: ${{ secrets.V2_WS_PATH_VMESS }}
       V2_WS_PATH_VLESS: ${{ secrets.V2_WS_PATH_VLESS }}
-      SS_PASS: ${{ secrets.SS_PASS }}
 
     steps:
 
