@@ -114,12 +114,17 @@ jobs:
                 "decryption": "none",
                 "clients": [
                   {
-                    "id": "${V2_UUID}"
+                    "id": "${V2_UUID}",
+                    "flow": "xtls-rprx-direct",
+                    "level": 0,
+                    "email": "love@example.com"
                   }
                 ]
               },
               "streamSettings": {
                 "network":"ws",
+                "security": "none",
+                "allowInsecure": "false",
                 "wsSettings": {
                   "path": "${V2_WS_PATH_VLESS}"
                 }
